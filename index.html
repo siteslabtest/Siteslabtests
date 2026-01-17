@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Padaria Online - Checkout Real</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Padaria Online - Checkout</h1>
+
+<section class="products">
+  <h2>Produtos</h2>
+  <div class="product-card">
+    <span>Pão Francês - R$ 1,00</span>
+    <button onclick="addToCart('Pão Francês', 1)">Adicionar</button>
+  </div>
+  <div class="product-card">
+    <span>Baguete - R$ 4,00</span>
+    <button onclick="addToCart('Baguete', 4)">Adicionar</button>
+  </div>
+  <div class="product-card">
+    <span>Refrigerante - R$ 5,00</span>
+    <button onclick="addToCart('Refrigerante', 5)">Adicionar</button>
+  </div>
+</section>
+
+<section class="cart">
+  <h2>Carrinho</h2>
+  <ul id="cart-items"></ul>
+  <p>Subtotal: R$ <span id="subtotal">0</span></p>
+
+  <label><input type="checkbox" id="delivery-checkbox"> Comprar com entrega em casa</label>
+
+  <div id="delivery-options" style="display:none;">
+    <p>Escolha como informar seu endereço:</p>
+    <button onclick="useCurrentLocation()">Usar minha localização atual</button>
+    <p>ou</p>
+    <input type="text" id="manual-address" placeholder="Digite seu endereço">
+    <button onclick="calculateFrete()">Calcular frete</button>
+  </div>
+
+  <p id="frete-display" style="display:none;">Frete: R$ <span id="frete">0</span></p>
+  <p>Total: R$ <span id="total">0</span></p>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
