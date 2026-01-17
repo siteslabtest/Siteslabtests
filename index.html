@@ -5,6 +5,17 @@
   <title>Padaria Online - Checkout Real</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9; }
+    h1, h2 { color: #333; }
+    .products, .cart { margin-bottom: 30px; }
+    .product-card { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; }
+    .produto { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; }
+    button { padding: 5px 10px; border: none; background-color: #4CAF50; color: white; border-radius: 3px; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+    #delivery-options { margin-top: 10px; padding: 10px; border: 1px solid #aaa; border-radius: 5px; background-color: #f0f0f0; }
+    input[type="text"] { padding: 5px; width: 70%; margin-right: 10px; }
+  </style>
 </head>
 <body>
 
@@ -12,6 +23,10 @@
 
 <section class="products">
   <h2>Produtos</h2>
+  <div id="produtos">
+    <!-- Produtos dinâmicos serão carregados pelo app.js -->
+  </div>
+  <!-- Exemplo fixo (opcional, mas será substituído pelos produtos dinâmicos) -->
   <div class="product-card">
     <span>Pão Francês - R$ 1,00</span>
     <button onclick="addToCart('Pão Francês', 1)">Adicionar</button>
