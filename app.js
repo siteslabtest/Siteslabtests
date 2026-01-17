@@ -59,9 +59,12 @@ async function calculateFrete(){
     const endereco = document.getElementById('manual-address').value;
     if(!endereco.trim()){ alert("Digite seu endereço ou use sua localização."); return; }
 
-    // Geocoding ORS para obter coordenadas
     const apiKey = "SUA_CHAVE_ORS_AQUI"; // substitua pela sua chave ORS gratuita
-    const url = `https://api.openrouteservice.org/geocode/search?api_key=${apiKey}&text=${encodeURIComponent(endereco)}&size=1`;
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+
+    // Geocoding ORS para obter coordenadas
+    const url = `${proxy}https://api.openrouteservice.org/geocode/search?api_key=${apiKey}&text=${encodeURIComponent(endereco)}&size=1`;
+
     try{
         const res = await fetch(url);
         const data = await res.json();
@@ -73,14 +76,17 @@ async function calculateFrete(){
     }
 }
 
-// Função que calcula frete real usando ORS Directions API
+// Função que calcula frete real usando ORS Directions API com proxy
 async function calcularFreteORS(latCliente, lngCliente){
     const apiKey = "SUA_CHAVE_ORS_AQUI"; // substitua pela sua chave ORS gratuita
-    const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${PADARIA_COORDS[1]},${PADARIA_COORDS[0]}&end=${lngCliente},${latCliente}`;
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+
+    const url = `${proxy}https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${PADARIA_COORDS[1]},${PADARIA_COORDS[0]}&end=${lngCliente},${latCliente}`;
 
     try{
         const res = await fetch(url);
         const data = await res.json();
+
         const distancia_m = data.features[0].properties.summary.distance;
         const distancia_km = distancia_m / 1000;
 
